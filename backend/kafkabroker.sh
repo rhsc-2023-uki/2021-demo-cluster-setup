@@ -16,14 +16,14 @@ else
   reset=''
 fi
 
-strimzi_version=`curl https://github.com/strimzi/strimzi-kafka-operator/releases/latest |  awk -F 'tag/' '{print $2}' | awk -F '"' '{print $1}' 2>/dev/null`
+strimzi_version="0.36.1"
 serving_version="v0.20.0"
 kourier_version="v0.20.0"
 eventing_version="v0.20.1"
 eventing_kafka_version="v0.20.0"
 
 # Default version for subscriptions
-VERSION_OPENSHIFT_SERVERLESS="1.14.0"
+VERSION_OPENSHIFT_SERVERLESS="1.29.1"
 
 # Channel to use for subscriptions
 OLM_CHANNEL="stable"
@@ -124,6 +124,7 @@ spec:
       transaction.state.log.min.isr: 2
       log.message.format.version: "2.6"
       inter.broker.protocol.version: "2.6"
+      ssl.client.auth: "none"
     storage:
       type: ephemeral
   zookeeper:
@@ -162,7 +163,7 @@ EOT
   apply "$subscription"
 
   header_text "* Waiting for OpenShift Serverless operators to come up"
-  wait_for_operators "knative-openshift" "knative-openshift-ingress" "knative-operator"
+  wait_for_operators "knative-openshift" "knative-openshift-ingress" "knative-operator-webhook"
 }
 
 apply_serving() {
@@ -170,7 +171,7 @@ apply_serving() {
   apply_project knative-serving
 
   serving="$(cat <<EOT
-apiVersion: operator.knative.dev/v1alpha1
+apiVersion: operator.knative.dev/v1beta1
 kind: KnativeServing
 metadata:
   name: knative-serving
@@ -186,7 +187,7 @@ apply_eventing() {
   apply_project knative-eventing
 
   eventing="$(cat <<EOT
-apiVersion: operator.knative.dev/v1alpha1
+apiVersion: operator.knative.dev/v1beta1
 kind: KnativeEventing
 metadata:
   name: knative-eventing
@@ -466,7 +467,7 @@ EOT
 
 adjust_serverless_operator_defaults() {
   adjust_knative_eventing="$(cat <<EOT
-apiVersion: operator.knative.dev/v1alpha1
+apiVersion: operator.knative.dev/v1beta1
 kind: KnativeEventing
 metadata:
   name: knative-eventing
@@ -499,12 +500,12 @@ EOT
   oc -n knative-eventing patch deployment/mt-broker-ingress --patch='{"spec": {"replicas": 5}}'
 
   header_text "* updating default maxIdleConns and maxIdleConnsPerHost settings"
-  oc -n knative-eventing patch configmap/config-kafka --type=merge --patch='{"data": {"maxIdleConns": "1000", "maxIdleConnsPerHost": "1000"}}'
+  oc -n knative-eventing patch configmap/config-imc-event-dispatcher --type=merge --patch='{"data": {"MaxIdleConnections": "1000", "MaxIdleConnectionsPerHost": "1000"}}'
 
-  header_text "* increase kafka-ch-dispatcher deployment replicas to 5"
-  oc -n knative-eventing patch deployment/kafka-ch-dispatcher --patch='{"spec": {"replicas": 5}}'
-  header_text "* add pod affinity for kafka-ch-dispatcher pods to notes with label demo.role=kafka"
-  oc -n knative-eventing patch deployment/kafka-ch-dispatcher --patch='{"spec":
+  header_text "* increase kafka-channel-dispatcher deployment replicas to 5"
+  oc -n knative-eventing patch deployment/kafka-channel-dispatcher --patch='{"spec": {"replicas": 5}}'
+  header_text "* add pod affinity for kafka-channel-dispatcher pods to notes with label demo.role=kafka"
+  oc -n knative-eventing patch deployment/kafka-channel-dispatcher --patch='{"spec":
      {"template":
        {"spec":
          {"affinity": {

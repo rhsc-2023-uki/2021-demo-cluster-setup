@@ -1,4 +1,4 @@
-apiVersion: v1
+apiVersion: template.openshift.io/v1
 kind: Template
 
 labels:
@@ -15,7 +15,6 @@ parameters:
     required: true
   - name: CONFIG_MAP_NAME
     value: 2021-demo-common
-    required: true
     required: true
   - name: HTTP_PORT
     value: '8080'

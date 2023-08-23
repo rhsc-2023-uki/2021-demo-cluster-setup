@@ -1,4 +1,4 @@
-apiVersion: v1
+apiVersion: template.openshift.io/v1
 kind: Template
 
 labels:
@@ -15,7 +15,7 @@ parameters:
     value: 2021-demo-common
     required: true
   - name: DATAGRID_HOST
-    value: datagrid.datagrid.svc.cluster.local
+    value: datagrid.bsdatagrid.svc.cluster.local
     required: true
   - name: DATAGRID_HOTROD_PORT
     value: "11222"

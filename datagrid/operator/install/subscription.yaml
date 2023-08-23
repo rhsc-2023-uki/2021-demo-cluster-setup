@@ -13,7 +13,7 @@ metadata:
   name: datagrid
   namespace: NAMESPACE
 spec:
-  channel: 2.1.x
+  channel: 2.2.5
   name: infinispan
   source: community-operators
   sourceNamespace: openshift-marketplace

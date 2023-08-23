@@ -1,8 +1,8 @@
 DG_DEMO_IMAGE=quay.io/redhatdemo/datagrid:2021
-DG_NAMESPACE=
-DG_LOCAL_SITE=
-DG_REMOTE_SITE_1=
-DG_REMOTE_SITE_2=
+DG_NAMESPACE=datagrid
+DG_LOCAL_SITE=aws
+DG_REMOTE_SITE_1=aws1
+DG_REMOTE_SITE_2=aws2
 
 
 .PHONY: operator/namespace

@@ -3,7 +3,7 @@ kind: Infinispan
 metadata:
   name: datagrid
 spec:
-  image: quay.io/infinispan/server:12.1.0.Final
+  image: quay.io/infinispan/server:13.0.18.Final
   container:
     cpu: "1000m"
     memory: 2Gi
