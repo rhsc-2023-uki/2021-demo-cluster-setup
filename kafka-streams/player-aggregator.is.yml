@@ -11,10 +11,10 @@ spec:
     local: false
   tags:
   - annotations:
-      openshift.io/imported-from: quay.io/redhatdemo/ 2021-kafka-streams-player-matches-aggregator
+      openshift.io/imported-from: quay.io/uksummit2023/2023-kafka-streams-player-matches-aggregator
     from:
       kind: DockerImage
-      name: quay.io/redhatdemo/2021-kafka-streams-player-matches-aggregator
+      name: quay.io/uksummit2023/2023-kafka-streams-player-matches-aggregator
     generation: 2
     importPolicy: {}
     name: latest

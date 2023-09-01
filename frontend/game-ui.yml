@@ -16,7 +16,7 @@ parameters:
     value: "4"
     required: true
   - name: IMAGE_REPOSITORY
-    value: quay.io/redhatdemo/2021-game-ui:latest
+    value: quay.io/uksummit2023/2023-game-ui:latest
     required: true
   - name: CONTAINER_REQUEST_CPU
     value: 250m

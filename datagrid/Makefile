@@ -1,4 +1,4 @@
-DG_DEMO_IMAGE=quay.io/redhatdemo/datagrid:2021
+DG_DEMO_IMAGE=quay.io/uksummit2023/2023-datagrid:2021
 DG_NAMESPACE=datagrid
 DG_LOCAL_SITE=aws
 DG_REMOTE_SITE_1=aws1

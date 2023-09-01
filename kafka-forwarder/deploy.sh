@@ -18,7 +18,7 @@ oc process -f "${DIR}/triggers.yaml" \
 -p PROJECT="${PROJECT}" | oc create -n battleships-backend -f -
 
 kn service create event-forwarder \
---image "quay.io/redhatdemo/2021-kafka-event-forwarder-nodejs" \
+--image "quay.io/uksummit2023/2023-kafka-event-forwarder-nodejs" \
 --env-from secret:kafka-forwarder-secret \
 --env-from cm:kafka-forwarder-config \
 -l app.openshift.io/runtime=nodejs

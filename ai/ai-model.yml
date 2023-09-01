@@ -15,7 +15,7 @@ parameters:
   - name: REPLICAS
     value: "2"
   - name: IMAGE_REPOSITORY
-    value: quay.io/redhatdemo/2021-ai:latest
+    value: quay.io/uksummit2023/2023-ai:latest
   - name: CONTAINER_REQUEST_CPU
     value: 250m
   - name: CONTAINER_REQUEST_MEMORY
