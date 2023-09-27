@@ -1,0 +1,62 @@
+apiVersion: apps.openshift.io/v1
+kind: DeploymentConfig
+metadata:
+  labels:
+    app: leaderboard-service
+    app.kubernetes.io/component: leaderboard-service
+    app.kubernetes.io/instance: leaderboard-service
+  name: leaderboard-service
+  namespace: battleships-backend
+spec:
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    deploymentconfig: leaderboard-service
+  strategy:
+    activeDeadlineSeconds: 21600
+    resources: {}
+    rollingParams:
+      intervalSeconds: 1
+      maxSurge: 25%
+      maxUnavailable: 25%
+      timeoutSeconds: 600
+      updatePeriodSeconds: 1
+    type: Rolling
+  template:
+    metadata:
+      annotations:
+        openshift.io/generated-by: OpenShiftNewApp
+      labels:
+        deploymentconfig: leaderboard-service
+    spec:
+      containers:
+      - env:
+        - name: QUARKUS_INFINISPAN_CLIENT_SERVER_LIST
+          value: datagrid.datagrid.svc.cluster.local:11222
+        image: quay.io/uksummit2023/2023-leaderboard-service@sha256:ed367851316aec47d5241f97d4dd228539207663f058f3d7c7906cf80080c132
+        imagePullPolicy: Always
+        name: leaderboard-service
+        ports:
+        - containerPort: 8080
+          protocol: TCP
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+  test: false
+  triggers:
+  - type: ConfigChange
+  - imageChangeParams:
+      automatic: true
+      containerNames:
+      - leaderboard-service
+      from:
+        kind: ImageStreamTag
+        name: leaderboard-service:latest
+        namespace: battleships-backend
+      lastTriggeredImage: quay.io/uksummit2023/2023-leaderboard-service@sha256:ed367851316aec47d5241f97d4dd228539207663f058f3d7c7906cf80080c132
+    type: ImageChange
