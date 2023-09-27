@@ -5,12 +5,12 @@ metadata:
   namespace: battleships-backend
   annotations:
     argocd.argoproj.io/compare-options: IgnoreExtraneous
-    autoscaling.knative.dev/min-scale: 5
 spec:
   template:
     metadata:
       annotations:
         client.knative.dev/user-image: 'quay.io/uksummit2023/2023-backend-bonus'
+        autoscaling.knative.dev/min-scale: 5
       name: bonus-v2
     spec:
       containerConcurrency: 0
