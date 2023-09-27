@@ -1,10 +1,10 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: backend-development
+  name: summit
   namespace: openshift-gitops
 spec:
-  project: battleships-development
+  project: summit
   destination:
     namespace: myapp-development
     server: https://kubernetes.default.svc
@@ -30,7 +30,7 @@ spec:
     - /spec/host
     kind: Route
   source:
-    path: deployment/backend/02-development
+    path: deployment/argocd
     targetRevision: main
     repoURL: https://github.com/rhsc-2023-uki/2021-demo-cluster-setup.git
   syncPolicy:

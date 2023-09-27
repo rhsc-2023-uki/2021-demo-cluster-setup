@@ -1,0 +1,6 @@
+bases:
+- projects/
+
+resources:
+- main-app.yaml
+- env/backend-development.yaml
