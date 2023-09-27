@@ -3,7 +3,11 @@ kind: Kustomization
 
 resources:
 - namespace.yaml
-- matchstart.yaml
+- service-matchend.yaml
+- trigger-matchend.yaml
+- service-matchstart.yaml
+- trigger-matchstart.yaml
+
 
 bases:
 - role-bindings/
