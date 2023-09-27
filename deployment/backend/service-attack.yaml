@@ -10,6 +10,7 @@ spec:
     metadata:
       annotations:
         client.knative.dev/user-image: 'quay.io/uksummit2023/2023-backend-attack:latest'
+        autoscaling.knative.dev/min-scale: '15'
       name: attack-v1
     spec:
       containerConcurrency: 0
