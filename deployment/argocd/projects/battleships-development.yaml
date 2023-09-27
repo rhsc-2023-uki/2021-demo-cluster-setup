@@ -1,0 +1,39 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: battleships-development
+  namespace: openshift-gitops
+  # Finalizer that ensures that project is not deleted until it is not referenced by any application
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  # Project description
+  description: Management of backend applications
+
+  # Allow manifests to deploy from specific Git repos
+  sourceRepos:
+  - '*'
+
+  # Limit the namespaces to which the project can deploy
+  destinations:
+  - server: https://kubernetes.default.svc
+    namespace: '*'
+
+  # Deny all cluster-scoped resources from being created, except for named items
+  clusterResourceWhitelist:
+  - group: ''
+    kind: Namespace
+  - group: 'rbac.authorization.k8s.io'
+    kind: ClusterRole
+  - group: 'rbac.authorization.k8s.io'
+    kind: ClusterRoleBinding
+
+  # Allow all namespaced-scoped resources to be created except named items
+  namespaceResourceBlacklist:
+
+  # Deny all namespaced-scoped resources from being created, except for named items
+  namespaceResourceWhitelist:
+
+  # Enables namespace orphaned resource monitoring.
+  orphanedResources:
+    warn: false
