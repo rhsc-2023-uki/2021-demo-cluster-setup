@@ -3,4 +3,4 @@ bases:
 
 resources:
 - main-app.yaml
-- env/backend-development.yaml
+- apps/backend.yaml
