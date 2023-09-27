@@ -8,3 +8,5 @@ resources:
 - apps/backend-admin.yaml
 - apps/backend-matchstart.yaml
 - apps/backend-matchend.yaml
+- apps/backend-leaderboard.yaml
+- apps/backend-scoring.yaml
