@@ -11,7 +11,7 @@ spec:
       annotations:
         client.knative.dev/user-image: 'quay.io/uksummit2023/2023-backend-matchstart'
         autoscaling.knative.dev/min-scale: '10'
-      name: matchstart-v1
+      name: matchstart-v2
     spec:
       containerConcurrency: 0
       containers:
@@ -34,4 +34,4 @@ spec:
   traffic:
     - latestRevision: false
       percent: 100
-      revisionName: matchstart-v1
+      revisionName: matchstart-v2

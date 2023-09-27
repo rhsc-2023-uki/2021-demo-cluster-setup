@@ -11,7 +11,7 @@ spec:
       annotations:
         client.knative.dev/user-image: 'quay.io/uksummit2023/2023-backend-matchend'
         autoscaling.knative.dev/min-scale: '5'
-      name: matchend-v1
+      name: matchend-v2
     spec:
       containerConcurrency: 0
       containers:
@@ -36,4 +36,4 @@ spec:
   traffic:
     - latestRevision: false
       percent: 100
-      revisionName: matchend-v1
+      revisionName: matchend-v2
