@@ -11,6 +11,7 @@ resources:
 - trigger-attack.yaml
 - service-bonus.yaml
 - trigger-bonus.yaml
+- broker.yaml
 
 bases:
 - role-bindings/
