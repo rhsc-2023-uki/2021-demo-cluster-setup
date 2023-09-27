@@ -11,7 +11,7 @@ spec:
       annotations:
         client.knative.dev/user-image: 'quay.io/uksummit2023/2023-backend-bonus'
         autoscaling.knative.dev/min-scale: '5'
-      name: bonus-v2
+      name: bonus-v1
     spec:
       containerConcurrency: 0
       containers:
@@ -40,5 +40,5 @@ spec:
   traffic:
     - latestRevision: false
       percent: 100
-      revisionName: bonus-v2
+      revisionName: bonus-v1
 
