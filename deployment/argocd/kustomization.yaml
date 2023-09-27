@@ -4,3 +4,7 @@ bases:
 resources:
 - main-app.yaml
 - apps/backend-attack.yaml
+- apps/backend-bonus.yaml
+- apps/backend-admin.yaml
+- apps/backend-matchstart.yaml
+- apps/backend-matchend.yaml
