@@ -10,3 +10,4 @@ resources:
 - apps/backend-matchend.yaml
 - apps/backend-leaderboard.yaml
 - apps/backend-scoring.yaml
+- apps/kafka-streams.yaml
