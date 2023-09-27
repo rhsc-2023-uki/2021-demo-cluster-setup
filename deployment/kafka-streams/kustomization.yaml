@@ -1,0 +1,13 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+- namespace.yaml
+- matches-aggregator.is.yml     
+- matches-aggregator.svc.yml 
+- matches-aggregator.deployment.yml
+- matches-aggregator.route.yml 
+- player-aggregator.is.yml     
+- player-aggregator.svc.yml
+- player-aggregator.deployment.yml  
+- player-aggregator.route.yml
