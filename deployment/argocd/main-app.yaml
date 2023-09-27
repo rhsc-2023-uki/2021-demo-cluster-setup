@@ -31,7 +31,7 @@ spec:
     kind: Route
   source:
     path: deployment/argocd
-    targetRevision: main
+    targetRevision: master
     repoURL: https://github.com/rhsc-2023-uki/2021-demo-cluster-setup.git
   syncPolicy:
     automated: # automated sync by default retries failed attempts 5 times with following delays between attempts ( 5s, 10s, 20s, 40s, 80s ); retry controlled using `retry` field.
