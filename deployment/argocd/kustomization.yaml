@@ -3,4 +3,4 @@ bases:
 
 resources:
 - main-app.yaml
-- apps/backend.yaml
+- apps/backend-attack.yaml

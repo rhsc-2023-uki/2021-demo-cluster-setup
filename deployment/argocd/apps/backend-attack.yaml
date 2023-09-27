@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: backend
+  name: backend-attack
   namespace: openshift-gitops
 spec:
   project: summit
@@ -30,7 +30,7 @@ spec:
     - /spec/host
     kind: Route
   source:
-    path: deployment/backend
+    path: deployment/backend/attack
     targetRevision: master
     repoURL: https://github.com/rhsc-2023-uki/2021-demo-cluster-setup.git
   syncPolicy:

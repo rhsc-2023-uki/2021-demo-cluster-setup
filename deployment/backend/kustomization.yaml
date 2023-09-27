@@ -7,11 +7,10 @@ resources:
 - trigger-matchend.yaml
 - service-matchstart.yaml
 - trigger-matchstart.yaml
-- service-attack.yaml
-- trigger-attack.yaml
 - service-bonus.yaml
 - trigger-bonus.yaml
 - broker.yaml
 
 bases:
 - role-bindings/
+- attack/
