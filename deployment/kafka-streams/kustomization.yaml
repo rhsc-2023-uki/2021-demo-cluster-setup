@@ -3,6 +3,7 @@ kind: Kustomization
 
 resources:
 - namespace.yaml
+- argocd-role-binding.yaml
 - matches-aggregator.is.yml     
 - matches-aggregator.svc.yml 
 - matches-aggregator.deployment.yml
