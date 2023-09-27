@@ -1,0 +1,43 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: bonus
+  namespace: battleships-backend
+  annotations:
+    argocd.argoproj.io/compare-options: IgnoreExtraneous
+spec:
+  template:
+    metadata:
+      annotations:
+        client.knative.dev/user-image: 'quay.io/uksummit2023/2023-backend-bonus'
+      name: bonus-v1
+    spec:
+      containerConcurrency: 0
+      containers:
+        - env:
+            - name: SCORINGSERVICE
+              value: http://scoring-service.battleships-scoring.svc.cluster.local:8080/
+            - name: WATCHMAN
+              value: http://watchman.battleships-backend.svc.cluster.local:8080/watch
+            - name: PRODMODE
+              value: production
+            - name: BONUS_SCORE
+              value: '1'
+            - name: NAMESPACE
+              value: battleships-backend
+            - name: BROKER
+              value: default
+          image: quay.io/uksummit2023/2023-backend-bonus
+          name: user-container
+          readinessProbe:
+            successThreshold: 1
+            tcpSocket:
+              port: 0
+          resources: {}
+      enableServiceLinks: false
+      timeoutSeconds: 300
+  traffic:
+    - latestRevision: false
+      percent: 100
+      revisionName: bonus-v1
+

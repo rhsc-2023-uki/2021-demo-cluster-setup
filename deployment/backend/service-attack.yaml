@@ -1,0 +1,50 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: attack
+  namespace: battleships-backend
+  annotations:
+    argocd.argoproj.io/compare-options: IgnoreExtraneous
+spec:
+  template:
+    metadata:
+      annotations:
+        client.knative.dev/user-image: 'quay.io/uksummit2023/2023-backend-attack:latest'
+      name: attack-v1
+    spec:
+      containerConcurrency: 0
+      containers:
+        - env:
+            - name: SCORINGSERVICE
+              value: http://scoring-service.battleships-scoring.svc.cluster.local:8080/
+            - name: WATCHMAN
+              value: http://watchman.battleships-backend.svc.cluster.local:8080/watch
+            - name: CARRIER_SCORE
+              value: '100'
+            - name: DESTROYER_SCORE
+              value: '250'
+            - name: SUBMARINE_SCORE
+              value: '150'
+            - name: BATTLESHIP_SCORE
+              value: '200'
+            - name: HIT_SCORE
+              value: '5'
+            - name: PRODMODE
+              value: production
+            - name: NAMESPACE
+              value: battleships-backend
+            - name: BROKER
+              value: default
+          image: quay.io/uksummit2023/2023-backend-attack:latest
+          name: user-container
+          readinessProbe:
+            successThreshold: 1
+            tcpSocket:
+              port: 0
+          resources: {}
+      enableServiceLinks: false
+      timeoutSeconds: 300
+  traffic:
+    - latestRevision: false
+      percent: 100
+      revisionName: attack-v1
