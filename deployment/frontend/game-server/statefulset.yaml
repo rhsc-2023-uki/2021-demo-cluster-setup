@@ -1,0 +1,60 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  labels:
+    app: app-name
+    app.openshift.io/runtime: nodejs
+    application: game-server
+  name: app-name
+spec:
+  podManagementPolicy: OrderedReady
+  replicas: 3
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app: app-name
+  serviceName: app-name
+  template:
+    metadata:
+      labels:
+        app: app-name
+    spec:
+      containers:
+      - env:
+        - name: NAMESPACE
+          value: my-namespace
+        - name: AWS_ACCESS_KEY_ID
+          value: ""
+        - name: AWS_SECRET_ACCESS_KEY
+          value: ""
+        - name: AI_AGENT_SERVER_URL
+          value: http://ai-agent-server.ai.svc.cluster.local:8080/agent
+        envFrom:
+        - configMapRef:
+            name: 2021-demo-common
+        - secretRef:
+            name: 2021-demo-common
+        image: quay.io/uksummit2023/2023-game-server:latest
+        imagePullPolicy: Always
+        name: app-name
+        ports:
+        - containerPort: 8080
+          name: web
+          protocol: TCP
+        resources:
+          limits:
+            cpu: 1000m
+            memory: 1024Mi
+          requests:
+            cpu: 1000m
+            memory: 1024Mi
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      securityContext: {}
+      terminationGracePeriodSeconds: 10
+  updateStrategy:
+    rollingUpdate:
+      partition: 0
+    type: RollingUpdate

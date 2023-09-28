@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  labels:
+    application: kafka-forwarder-config
+  name: kafka-forwarder-config
+data:
+  CLUSTER_NAME: my-cluster
+  FUNCTION_LOG_LEVEL: warn
+  KAFKA_BOOTSTRAP_URL: kafka-bootstrap-url
+  LOG_LEVEL: LL
+  NODE_ENV: node-env

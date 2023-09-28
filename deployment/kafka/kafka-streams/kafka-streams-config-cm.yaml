@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  labels:
+    application: kafka-streams-config
+  name: kafka-streams-config
+data:
+  KAFKA_BOOTSTRAP_URL: kafka-bootstrap-url
+  LOG_LEVEL: LL
+  TRUSTSTORE_LOCATION: truststore-location
+  TRUSTSTORE_PASSWORD: truststore-password

@@ -1,0 +1,37 @@
+apiVersion: apps.openshift.io/v1
+kind: DeploymentConfig
+metadata:
+  labels:
+    app: game-ui
+    app.openshift.io/runtime: nginx
+    application: game-ui
+  name: game-ui
+spec:
+  replicas: 4
+  revisionHistoryLimit: 2
+  selector:
+    app: game-ui
+  strategy:
+    type: Rolling
+  template:
+    metadata:
+      labels:
+        app: game-ui
+    spec:
+      containers:
+      - image: quay.io/uksummit2023/2023-game-ui:latest
+        imagePullPolicy: Always
+        name: game-ui
+        ports:
+        - containerPort: 8080
+          name: http
+          protocol: TCP
+        resources:
+          limits:
+            cpu: 250m
+            memory: 256Mi
+          requests:
+            cpu: 250m
+            memory: 256Mi
+  triggers:
+  - type: ConfigChange

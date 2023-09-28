@@ -1,0 +1,20 @@
+  kind: Route
+  metadata:
+    labels:
+      app: app-name
+      application: game-server
+    name: app-name
+  spec:
+    alternateBackends:
+    - kind: Service
+      name: app-name-1
+      weight: 33
+    - kind: Service
+      name: app-name-2
+      weight: 33
+    port:
+      targetPort: "8080"
+    to:
+      kind: Service
+      name: app-name-0
+      weight: 34

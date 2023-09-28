@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: game-ui
+    application: game-ui
+  name: game-ui
+spec:
+  ports:
+  - name: http
+    port: 8080
+  selector:
+    app: game-ui

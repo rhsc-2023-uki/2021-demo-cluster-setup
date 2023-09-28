@@ -3,6 +3,8 @@ kind: Application
 metadata:
   name: backend-attack
   namespace: openshift-gitops
+  labels:
+    domain: backend
 spec:
   project: summit
   destination:

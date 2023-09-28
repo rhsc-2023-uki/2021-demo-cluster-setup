@@ -1,0 +1,193 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+patches:
+- patch: |-
+    - op: replace
+      path: /spec/template/spec/containers/0/env/0/value
+      value: game-namespace
+  target:
+    kind: StatefulSet
+    name: app-name
+- patch: |-
+    - op: replace
+      path: /metadata/labels/app
+      value: game-app
+  target:
+    kind: StatefulSet
+    name: app-name
+- patch: |-
+    - op: replace
+      path: /metadata/labels/application
+      value: game-server
+  target:
+    kind: StatefulSet
+    name: app-name
+- patch: |-
+    - op: replace
+      path: /metadata/name
+      value: game-app
+  target:
+    kind: StatefulSet
+    name: app-name
+- patch: |-
+    - op: replace
+      path: /spec/selector/matchLabels/app
+      value: game-app
+  target:
+    kind: StatefulSet
+    name: app-name
+- patch: |-
+    - op: replace
+      path: /spec/serviceName
+      value: game-app
+  target:
+    kind: StatefulSet
+    name: app-name
+- patch: |-
+    - op: replace
+      path: /spec/template/metadata/labels/app
+      value: game-app
+  target:
+    kind: StatefulSet
+    name: app-name
+- patch: |-
+    - op: replace
+      path: /spec/template/spec/containers/0/name
+      value: game-app
+  target:
+    kind: StatefulSet
+    name: app-name
+- patch: |-
+    - op: replace
+      path: /metadata/labels/app
+      value: game-app-0
+  target:
+    kind: Service
+    name: app-name-0
+- patch: |-
+    - op: replace
+      path: /metadata/name
+      value: game-app-0
+  target:
+    kind: Service
+    name: app-name-0
+- patch: |-
+    - op: replace
+      path: /spec/selector/statefulset.kubernetes.io~1pod-name
+      value: game-app-0
+  target:
+    kind: Service
+    name: app-name-0
+- patch: |-
+    - op: replace
+      path: /metadata/labels/app
+      value: game-app-1
+  target:
+    kind: Service
+    name: app-name-1
+- patch: |-
+    - op: replace
+      path: /metadata/name
+      value: game-app-1
+  target:
+    kind: Service
+    name: app-name-1
+- patch: |-
+    - op: replace
+      path: /spec/selector/statefulset.kubernetes.io~1pod-name
+      value: game-app-1
+  target:
+    kind: Service
+    name: app-name-1
+- patch: |-
+    - op: replace
+      path: /metadata/labels/app
+      value: game-app-2
+  target:
+    kind: Service
+    name: app-name-2
+- patch: |-
+    - op: replace
+      path: /metadata/name
+      value: game-app-2
+  target:
+    kind: Service
+    name: app-name-2
+- patch: |-
+    - op: replace
+      path: /spec/selector/statefulset.kubernetes.io~1pod-name
+      value: game-app-2
+  target:
+    kind: Service
+    name: app-name-2
+- patch: |-
+    - op: replace
+      path: /metadata/labels/app
+      value: game-app-3
+  target:
+    kind: Service
+    name: app-name-3
+- patch: |-
+    - op: replace
+      path: /metadata/name
+      value: game-app-3
+  target:
+    kind: Service
+    name: app-name-3
+- patch: |-
+    - op: replace
+      path: /spec/selector/statefulset.kubernetes.io~1pod-name
+      value: game-app-3
+  target:
+    kind: Service
+    name: app-name-3
+- patch: |-
+    - op: replace
+      path: /metadata/labels/app
+      value: game-app
+  target:
+    kind: Route
+    name: app-name
+- patch: |-
+    - op: replace
+      path: /metadata/labels/application
+      value: game-server
+  target:
+    kind: Route
+    name: app-name
+- patch: |-
+    - op: replace
+      path: /metadata/name
+      value: game-app
+  target:
+    kind: Route
+    name: app-name
+- patch: |-
+    - op: replace
+      path: /spec/alternateBackends/0/name
+      value: app-name-1
+  target:
+    kind: Route
+    name: app-name
+- patch: |-
+    - op: replace
+      path: /spec/alternateBackends/1/name
+      value: app-name-2
+  target:
+    kind: Route
+    name: app-name
+- patch: |-
+    - op: replace
+      path: /spec/to/name
+      value: app-name-0
+  target:
+    kind: Route
+    name: app-name
+resources:
+- statefulset.yaml
+- service-0.yaml
+- service-1.yaml
+- service-2.yaml
+- service-3.yaml
+- route.yaml

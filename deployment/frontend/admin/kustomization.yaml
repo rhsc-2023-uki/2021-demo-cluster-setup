@@ -1,0 +1,5 @@
+resources:
+- namespace.yaml
+- admin-deployment.yaml
+- admin-route.yaml
+- admin-service.yaml

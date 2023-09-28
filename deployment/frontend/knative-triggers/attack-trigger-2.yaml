@@ -1,0 +1,14 @@
+apiVersion: eventing.knative.dev/v1
+kind: Trigger
+metadata:
+  labels:
+    app: game-server
+    application: knative-triggers
+  name: app-name-scores-2
+spec:
+  broker: default
+  filter:
+    attributes:
+      type: attackprocessed-app-name-2
+  subscriber:
+    uri: http://app-name-2.my-namespace.svc.cluster.local:8080/event/trigger

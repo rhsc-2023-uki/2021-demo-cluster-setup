@@ -1,0 +1,59 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+patches:
+- patch: |-
+    - op: replace
+      path: /stringData/KAFKA_SVC_USERNAME
+      value: kafka-user
+  target:
+    kind: Secret
+    name: kafka-streams-secret
+- patch: |-
+    - op: replace
+      path: /stringData/KAFKA_SVC_PASSWORD
+      value: kafka-password
+  target:
+    kind: Secret
+    name: kafka-streams-secret
+- patch: |-
+    - op: replace
+      path: /data/LOG_LEVEL
+      value: warn
+  target:
+    kind: ConfigMap
+    name: kafka-streams-config
+- patch: |-
+    - op: replace
+      path: /data/KAFKA_BOOTSTRAP_URL
+      value: url
+  target:
+    kind: ConfigMap
+    name: kafka-streams-config
+- patch: |-
+    - op: replace
+      path: /data/TRUSTSTORE_LOCATION
+      value: truststore-loc
+  target:
+    kind: ConfigMap
+    name: kafka-streams-config
+- patch: |-
+    - op: replace
+      path: /data/TRUSTSTORE_PASSWORD
+      value: truststore-pwd
+  target:
+    kind: ConfigMap
+    name: kafka-streams-config
+resources:
+- namespace.yaml
+- kafka-streams-secret.yaml
+- kafka-streams-config-cm.yaml
+- argocd-role-binding.yaml
+- matches-aggregator.is.yml     
+- matches-aggregator.svc.yml 
+- matches-aggregator.deployment.yml
+- matches-aggregator.route.yml 
+- player-aggregator.is.yml     
+- player-aggregator.svc.yml
+- player-aggregator.deployment.yml  
+- player-aggregator.route.yml

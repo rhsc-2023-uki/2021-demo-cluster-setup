@@ -30,7 +30,7 @@ spec:
     - /spec/host
     kind: Route
   source:
-    path: deployment/kafka-streams
+    path: deployment/kafka/kafka-streams
     targetRevision: master
     repoURL: https://github.com/rhsc-2023-uki/2021-demo-cluster-setup.git
   syncPolicy:

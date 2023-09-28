@@ -1,14 +1,12 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: backend-bonus
+  name: kafka-forwarder
   namespace: openshift-gitops
-  labels:
-    domain: backend
 spec:
   project: summit
   destination:
-    namespace: battleships-backend
+    namespace: kafka-streams
     server: https://kubernetes.default.svc
   ignoreDifferences:
   - group: argoproj.io
@@ -32,7 +30,7 @@ spec:
     - /spec/host
     kind: Route
   source:
-    path: deployment/backend/bonus
+    path: deployment/kafka/kafka-forwarder
     targetRevision: master
     repoURL: https://github.com/rhsc-2023-uki/2021-demo-cluster-setup.git
   syncPolicy:

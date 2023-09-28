@@ -1,0 +1,13 @@
+apiVersion: eventing.knative.dev/v1
+kind: Trigger
+metadata:
+  labels:
+    application: kafka-forwarder-triggers
+  name: kafka-forwarder-match-end
+spec:
+  broker: default
+  filter:
+    attributes:
+      type: match-end
+  subscriber:
+    uri: http://event-forwarder.my-project.svc.cluster.local/
