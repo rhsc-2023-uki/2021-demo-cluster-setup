@@ -11,3 +11,9 @@ resources:
 - apps/backend-leaderboard.yaml
 - apps/backend-scoring.yaml
 - apps/kafka-streams.yaml
+- apps/kafka-forwarder.yaml
+- apps/frontend-admin.yaml
+- apps/frontend-common.yaml
+- apps/frontend-game-server.yaml
+- apps/frontend-game-ui.yaml
+- apps/frontend-knative-triggers.yaml
