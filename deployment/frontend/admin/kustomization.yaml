@@ -3,3 +3,6 @@ resources:
 - admin-deployment.yaml
 - admin-route.yaml
 - admin-service.yaml
+
+bases:
+- ../role-bindings
