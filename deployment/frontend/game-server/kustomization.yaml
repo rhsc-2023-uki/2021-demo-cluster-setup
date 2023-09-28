@@ -187,7 +187,7 @@ patches:
 resources:
 - statefulset.yaml
 - service-0.yaml
-#- service-1.yaml
-#- service-2.yaml
-#- service-3.yaml
+- service-1.yaml
+- service-2.yaml
+- service-3.yaml
 #- route.yaml
