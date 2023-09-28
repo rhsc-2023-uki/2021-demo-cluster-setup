@@ -5,7 +5,7 @@ patches:
 - patch: |-
     - op: replace
       path: /data/LOG_LEVEL
-      value: 1
+      value: warn
   target:
     kind: ConfigMap
     name: 2021-demo-common
