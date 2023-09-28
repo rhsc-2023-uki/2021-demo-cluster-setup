@@ -186,7 +186,7 @@ patches:
     name: app-name
 resources:
 - statefulset.yaml
-#- service-0.yaml
+- service-0.yaml
 #- service-1.yaml
 #- service-2.yaml
 #- service-3.yaml
