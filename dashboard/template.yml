@@ -1,4 +1,4 @@
-apiVersion: v1
+apiVersion: template.openshift.io/v1
 kind: Template
 
 labels:
@@ -89,7 +89,7 @@ objects:
         spec:
           containers:
             - name: dashboard-ui
-              image: quay.io/uksummit2023/2023-dashboard-ui
+              image: quay.io/uksummit2023/2023-dashboard-ui:2023-1
               ports:
                 - containerPort: 8000
                   protocol: TCP

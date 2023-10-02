@@ -17,7 +17,7 @@ operator/install: operator/namespace
 	@sed -e "s/NAMESPACE/$(DG_NAMESPACE)/g" operator/install/subscription.yaml | oc apply -n $(DG_NAMESPACE) -f -
 
 .PHONY: cluster/image
-cluster/image:
+cluster/image:DG_LOCAL_SITE
 	@docker build . -t $(DG_DEMO_IMAGE)
 	@docker push $(DG_DEMO_IMAGE)
 
@@ -25,7 +25,8 @@ cluster/image:
 cluster/deploy:
 	@for i in {1..30}; do oc wait --for condition=established --timeout=60s crd/infinispans.infinispan.org -n $(DG_NAMESPACE) && break || sleep 1; done
 	@oc -n $(DG_NAMESPACE) apply -f operator/datagrid.yaml
-	@for i in {1..30}; do oc rollout status statefulset datagrid -n $(DG_NAMESPACE) && break || sleep 1; done
+	@for i in {1..30}; do oc rollout status statefulset datagrid -n $(DG_NAMESPACE) && break || sleep 5; done
+	@sleep 15
 
 .PHONY: caches/deploy
 caches/deploy:

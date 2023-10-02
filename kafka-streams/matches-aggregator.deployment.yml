@@ -24,23 +24,17 @@ spec:
       labels:
         deployment: ks-matches
     spec:
-      volumes:
-      - name: truststore
-        secret:
-          secretName: truststore
+     
       containers:
       - envFrom:
         - secretRef:
             name: kafka-streams-secret
         - configMapRef:
             name: kafka-streams-config
-        image: quay.io/uksummit2023/2023-kafka-streams-match-aggregator
+        image: quay.io/uksummit2023/2023-kafka-streams-match-aggregator:2023-4
         imagePullPolicy: Always
         name: ks-matches
-        volumeMounts:
-          - mountPath: "/var/truststore"
-            name: truststore
-            readOnly: true
+        
         ports:
         - containerPort: 8080
           protocol: TCP

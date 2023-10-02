@@ -16,7 +16,7 @@ else
   reset=''
 fi
 
-strimzi_version="0.36.1"
+strimzi_version="0.37.0"
 serving_version="v0.20.0"
 kourier_version="v0.20.0"
 eventing_version="v0.20.1"
@@ -24,6 +24,7 @@ eventing_kafka_version="v0.20.0"
 
 # Default version for subscriptions
 VERSION_OPENSHIFT_SERVERLESS="1.29.1"
+OPENSHIFT_OLM_CHANNEL="stable-1.29"
 
 # Channel to use for subscriptions
 OLM_CHANNEL="stable"
@@ -141,7 +142,7 @@ EOT
 
 apply_openshift_serverless_subscription() {
   release=${1:-${VERSION_OPENSHIFT_SERVERLESS}}
-  channel=${2:-$OLM_CHANNEL}
+  channel=${2:-$OPENSHIFT_OLM_CHANNEL}
   header_text "Using Serverless Version:                   ${release}"
   header_text "Using OLM Channel Version:                  ${channel}"
 

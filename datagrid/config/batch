@@ -1,4 +1,4 @@
-schema upload --file=/etc/batch/LeaderboardServiceContextInitializer.proto LeaderboardServiceContextInitializer.proto
+schema --upload=/etc/batch/LeaderboardServiceContextInitializer.proto LeaderboardServiceContextInitializer.proto
 
 create cache --file=/etc/batch/match-instances.xml match-instances
 create cache --file=/etc/batch/players.xml players

@@ -34,7 +34,7 @@ spec:
             name: kafka-streams-secret
         - configMapRef:
             name: kafka-streams-config
-        image: quay.io/uksummit2023/2023-kafka-streams-player-matches-aggregator
+        image: quay.io/uksummit2023/2023-kafka-streams-player-matches-aggregator:2023-1
         imagePullPolicy: Always
         name: ks-players
         volumeMounts:
