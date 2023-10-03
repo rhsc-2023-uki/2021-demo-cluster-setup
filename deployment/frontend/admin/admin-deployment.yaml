@@ -22,11 +22,11 @@ spec:
       - env:
         - name: ADMIN_USERNAME
           value: admin
-          envFrom:
-          - secretRef:
-            name: 2021-demo-common
-          - configMapRef:
-            name: 2021-demo-common
+        envFrom:
+        - secretRef:
+          name: 2021-demo-common
+        - configMapRef:
+          name: 2021-demo-common
         image: quay.io/uksummit2023/2023-game-admin-hq:latest
         imagePullPolicy: Always
         name: admin-ui
