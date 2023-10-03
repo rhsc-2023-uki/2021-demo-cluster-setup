@@ -24,15 +24,9 @@ spec:
         - name: NAMESPACE
           value: frontend
         - name: AWS_ACCESS_KEY_ID
-          valueFrom:
-            secretRef:
-              name: creds
-              key: AWS_ACCESS_KEY_ID
+          value: "123"
         - name: AWS_SECRET_ACCESS_KEY
-          valueFrom:
-            secretRef:
-              name: creds
-              key: AWS_SECRET_ACCESS_KEY
+          value: "123!"
         - name: AI_AGENT_SERVER_URL
           value: http://ai-agent-server.ai.svc.cluster.local:8080/agent
         envFrom:
