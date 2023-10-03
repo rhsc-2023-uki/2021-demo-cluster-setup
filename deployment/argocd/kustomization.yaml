@@ -3,15 +3,15 @@ bases:
 
 resources:
 - main-app.yaml
-- apps/backend-attack.yaml
-- apps/backend-bonus.yaml
-- apps/backend-admin.yaml
-- apps/backend-matchstart.yaml
-- apps/backend-matchend.yaml
-- apps/backend-leaderboard.yaml
-- apps/backend-scoring.yaml
-- apps/kafka-streams.yaml
-- apps/kafka-forwarder.yaml
+#- apps/backend-attack.yaml
+#- apps/backend-bonus.yaml
+#- apps/backend-admin.yaml
+#- apps/backend-matchstart.yaml
+#- apps/backend-matchend.yaml
+#- apps/backend-leaderboard.yaml
+#- apps/backend-scoring.yaml
+#- apps/kafka-streams.yaml
+#- apps/kafka-forwarder.yaml
 - apps/frontend-admin.yaml
 - apps/frontend-common.yaml
 - apps/frontend-game-server.yaml
