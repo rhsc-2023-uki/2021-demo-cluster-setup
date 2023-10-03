@@ -4,11 +4,12 @@ metadata:
   labels:
     app: game-server
     application: knative-triggers
-  name: app-name-bonuses-0
+  name: game-server-bonuses-0
+  namespace: battleships-backend
 spec:
   broker: default
   filter:
     attributes:
-      type: bonusprocessed-app-name-0
+      type: bonusprocessed-game-server-0
   subscriber:
-    uri: http://app-name-0.my-namespace.svc.cluster.local:8080/event/trigger
+    uri: http://game-server-0.frontend.svc.cluster.local:8080/event/trigger

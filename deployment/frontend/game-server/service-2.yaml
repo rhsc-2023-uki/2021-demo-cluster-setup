@@ -2,13 +2,13 @@ apiVersion: v1
 kind: Service
 metadata:
   labels:
-    app: app-name-2
+    app: game-server-2
     application: game-server
-  name: app-name-2
+  name: game-server-2
 spec:
   ports:
   - port: 8080
     protocol: TCP
     targetPort: 8080
   selector:
-    statefulset.kubernetes.io/pod-name: app-name-2
+    statefulset.kubernetes.io/pod-name: game-server-2

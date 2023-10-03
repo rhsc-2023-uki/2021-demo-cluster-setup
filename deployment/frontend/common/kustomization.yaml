@@ -5,21 +5,21 @@ patches:
 - patch: |-
     - op: replace
       path: /data/LOG_LEVEL
-      value: warn
+      value: info
   target:
     kind: ConfigMap
     name: 2021-demo-common
 - patch: |-
     - op: replace
       path: /data/CLUSTER_NAME
-      value: summit-cluster
+      value: cluster-6dg8f.6dg8f.sandbox1683.opentlc.com
   target:
     kind: ConfigMap
     name: 2021-demo-common
 - patch: |-
     - op: replace
       path: /stringData/ADMIN_PASSWORD
-      value: redhat123!
+      value: secretsauce
   target:
     kind: Secret
     name: 2021-demo-common

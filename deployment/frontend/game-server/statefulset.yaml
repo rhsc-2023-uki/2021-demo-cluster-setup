@@ -2,27 +2,27 @@ apiVersion: apps/v1
 kind: StatefulSet
 metadata:
   labels:
-    app: app-name
+    app: game-server
     app.openshift.io/runtime: nodejs
     application: game-server
-  name: app-name
+  name: game-server
 spec:
   podManagementPolicy: OrderedReady
   replicas: 3
   revisionHistoryLimit: 10
   selector:
     matchLabels:
-      app: app-name
-  serviceName: app-name
+      app: game-server
+  serviceName: game-server
   template:
     metadata:
       labels:
-        app: app-name
+        app: game-server
     spec:
       containers:
       - env:
         - name: NAMESPACE
-          value: my-namespace
+          value: frontend
         - name: AWS_ACCESS_KEY_ID
           valueFrom:
             secretRef:
@@ -42,7 +42,7 @@ spec:
             name: 2021-demo-common
         image: quay.io/uksummit2023/2023-game-server:latest
         imagePullPolicy: Always
-        name: app-name
+        name: game-server
         ports:
         - containerPort: 8080
           name: web

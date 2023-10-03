@@ -3,11 +3,11 @@ data:
   CLUSTER_NAME: my-cluster
   DATAGRID_CONSOLE_PORT: "9990"
   DATAGRID_CONSOLE_REST_PORT: "8080"
-  DATAGRID_HOST: datagrid.bsdatagrid.svc.cluster.local
+  DATAGRID_HOST: datagrid.datagrid.svc.cluster.local
   DATAGRID_HOTROD_PORT: "11222"
   FASTIFY_LOG_ENABLED: "false"
   HTTP_PORT: "8080"
-  KAFKA_BOOTSTRAP_URL: ""
+  KAFKA_BOOTSTRAP_URL: "http://my-cluster-kafka-bootstrap.kafka.svc.cluster.local"
   LOG_LEVEL: LL
   NODE_ENV: dev
 kind: ConfigMap
