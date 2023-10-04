@@ -8,7 +8,7 @@ metadata:
 spec:
   project: summit
   destination:
-    namespace: battleships-backend
+    namespace: battleships-scoring
     server: https://kubernetes.default.svc
   ignoreDifferences:
   - group: argoproj.io

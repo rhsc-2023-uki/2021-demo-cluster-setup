@@ -9,7 +9,7 @@ resources:
 #- apps/backend-matchstart.yaml
 #- apps/backend-matchend.yaml
 #- apps/backend-leaderboard.yaml
-#- apps/backend-scoring.yaml
+- apps/backend-scoring.yaml
 #- apps/kafka-streams.yaml
 #- apps/kafka-forwarder.yaml
 - apps/frontend-admin.yaml
