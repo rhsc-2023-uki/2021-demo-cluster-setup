@@ -4,3 +4,7 @@ resources:
 - scoring-deployment.yaml
 - scoring-svc.yaml
 - scoring-route-secure.yaml
+images:
+- name: quay.io/uksummit2023/2023-scoring-service
+  newName: quay.io/jbaxter0/rhsc23-scoring
+  newTag: f823bdc4d64fd066a54e075715486688f3b02b66
