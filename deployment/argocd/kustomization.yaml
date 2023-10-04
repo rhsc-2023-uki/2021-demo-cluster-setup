@@ -1,8 +1,7 @@
-bases:
-- projects/
-- ../../backend/role-bindings/
 
 resources:
+- projects/
+- ../backend/role-bindings/
 - main-app.yaml
 #- apps/backend-attack.yaml
 #- apps/backend-bonus.yaml
