@@ -1,5 +1,6 @@
 bases:
 - projects/
+- ../../backend/role-bindings/
 
 resources:
 - main-app.yaml
