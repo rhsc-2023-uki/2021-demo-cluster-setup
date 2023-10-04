@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: Service
+metadata:
+  
+  labels:
+    app: scoring-service
+    app.kubernetes.io/component: scoring-service
+    app.kubernetes.io/instance: scoring-service
+  name: scoring-service
+  namespace: battleships-scoring
+  
+spec:
+  ports:
+  - name: 8080-tcp
+    port: 8080
+    protocol: TCP
+    targetPort: 8080
+  - name: 8443-tcp
+    port: 8443
+    protocol: TCP
+    targetPort: 8443
+  selector:
+    deploymentconfig: scoring-service
+  sessionAffinity: None
+  type: ClusterIP

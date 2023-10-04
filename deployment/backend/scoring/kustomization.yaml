@@ -1,5 +1,6 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
-- scoring-deploymentconfig.yaml
+- scoring-deployment.yaml
+- scoring-svc.yaml
 - scoring-route-secure.yaml
